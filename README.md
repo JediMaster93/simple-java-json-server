@@ -1,6 +1,6 @@
 # simple-java-json-server
 
-## Explenation
+## Explanation
 This is a simple web server, it receives json data in this format
 ```
 

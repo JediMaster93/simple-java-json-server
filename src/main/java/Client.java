@@ -3,10 +3,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Client {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         InetAddress host = InetAddress.getLocalHost();
         Socket socket = new Socket(host.getHostAddress(), 4444);
         ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -21,8 +20,20 @@ public class Client {
                 "}";
         outputStream.writeObject(outData);
 
-        //String output = (String) inputStream.readObject();
-        //System.out.println(output);
+        outData ="{\n" +
+                "  \"method\": \"get\",\n" +
+                "  \"person\": {\n" +
+                "    \"name\": \"Jakov\",\n" +
+                "    \"age\": \"25\"\n" +
+                "  }\n" +
+                "}";
+        outputStream.flush();
+        Thread.sleep(1000);
+        outputStream.writeObject(outData);
+        outputStream.flush();
+        System.out.println("before read");
+        String output = (String) inputStream.readObject();
+        System.out.println(output);
 
 
         outputStream.close();

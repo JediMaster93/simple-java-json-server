@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class PersonList {
@@ -21,7 +23,10 @@ public class PersonList {
     public ArrayList<JsonObj.Person> getPersons() {
         return persons;
     }
-
+    public String personsToJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this.persons);
+    }
     @Override
     public String toString() {
         String output="";

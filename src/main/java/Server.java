@@ -1,9 +1,6 @@
-import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 
 public class Server {
     private PersonList personsList;
@@ -11,13 +8,14 @@ public class Server {
     public Server() {
         personsList = new PersonList();
     }
-    public static void   main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+
+    public static void main(String[] args) throws IOException {
         Server s = new Server();
         s.startServer();
 
     }
 
-    private  void startServer() throws IOException {
+    private void startServer() throws IOException {
         ServerSocket serverSocket = new ServerSocket(4444);
 
         while (true) {
@@ -25,7 +23,7 @@ public class Server {
             ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
             ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            Thread t = new Thread(new RequestHandler(out, in,personsList));
+            Thread t = new Thread(new RequestHandler(out, in, personsList));
             t.start();
 
         }

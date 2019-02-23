@@ -1,7 +1,8 @@
 public class JsonObj {
     private String method;
-    public  Person person = new Person();
-    public static class Person{
+    public Person person = new Person();
+
+    public static class Person {
         private int age;
         private String name;
 

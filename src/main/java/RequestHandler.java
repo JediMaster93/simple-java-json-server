@@ -3,11 +3,10 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
-class RequestHandler implements Runnable{
+class RequestHandler implements Runnable {
 
-    private  PersonList personList;
+    private PersonList personList;
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
@@ -18,7 +17,7 @@ class RequestHandler implements Runnable{
     }
 
     public void run() {
-        String inputString = null;
+        String inputString;
         try {
 
             while (true) {

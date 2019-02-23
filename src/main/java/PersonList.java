@@ -4,36 +4,41 @@ import java.util.ArrayList;
 
 public class PersonList {
     private ArrayList<JsonObj.Person> persons;
-    public PersonList(){
+
+    public PersonList() {
         persons = new ArrayList<JsonObj.Person>();
 
-    };
-    public JsonObj.Person getByName(String name){
-        for(JsonObj.Person p : persons){
-            if (p.getName().equals(name)){
+    }
+
+    public JsonObj.Person getByName(String name) {
+        for (JsonObj.Person p : persons) {
+            if (p.getName().equals(name)) {
                 return p;
             }
         }
         return null;
     }
-    public void append(JsonObj.Person person){
+
+    public void append(JsonObj.Person person) {
         this.persons.add(person);
     }
 
     public ArrayList<JsonObj.Person> getPersons() {
         return persons;
     }
-    public String personsToJson(){
+
+    public String personsToJson() {
         Gson gson = new Gson();
         return gson.toJson(this.persons);
     }
+
     @Override
     public String toString() {
-        String output="";
-        for(JsonObj.Person p : persons){
-            output += p.toString();
+        StringBuilder output = new StringBuilder();
+        for (JsonObj.Person p : persons) {
+            output.append(p.toString());
         }
-        return output;
+        return output.toString();
 
     }
 }

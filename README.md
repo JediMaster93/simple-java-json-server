@@ -14,8 +14,7 @@ This is a simple web server, it receives json data in this format
 ```
 
 Then it adds the person object to the list of the server.
-Right now server can only add, but I will implement getting, maybe filtering and adding multiple persons in one request.
-
+You can also send a get method to receive all persons.
 ## Usage
 1. Download java 8
 2. Run Server.java

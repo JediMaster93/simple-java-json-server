@@ -20,19 +20,36 @@ public class Client {
                 "}";
         outputStream.writeObject(outData);
 
+        //language=JSON
         outData ="{\n" +
-                "  \"method\": \"get\",\n" +
-                "  \"person\": {\n" +
-                "    \"name\": \"Jakov\",\n" +
-                "    \"age\": \"25\"\n" +
-                "  }\n" +
+                "  \"method\": \"get\"\n" +
                 "}";
         outputStream.flush();
         Thread.sleep(1000);
         outputStream.writeObject(outData);
         outputStream.flush();
-        System.out.println("before read");
         String output = (String) inputStream.readObject();
+        System.out.println(output);
+        Thread.sleep(1000);
+        //language=JSON
+        outData ="{\n" +
+                "  \"method\": \"delete\",\n" +
+                "  \"idToDelete\": 1\n" +
+                "}";
+
+        outputStream.writeObject(outData);
+        outputStream.flush();
+
+        Thread.sleep(1000);
+        //language=JSON
+        outData ="{\n" +
+                "  \"method\": \"get\"\n" +
+                "}";
+        outputStream.flush();
+        Thread.sleep(1000);
+        outputStream.writeObject(outData);
+        outputStream.flush();
+        output = (String) inputStream.readObject();
         System.out.println(output);
 
 

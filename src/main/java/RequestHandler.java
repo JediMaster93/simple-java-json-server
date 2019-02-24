@@ -33,14 +33,11 @@ class RequestHandler implements Runnable {
                         this.personList.append(json.person);
                     }
                     if (json.getMethod().equals("get")) {
-/*
-                        System.out.println(personList.getPersons());;
-                        System.out.println("writing");
-                        out.writeObject(personList.getPersons().toString());
-                        System.out.println("written");
-*/
                         out.writeObject(gson.toJson(personList.getPersons()));
-                        //System.out.println(gson.toJson(personList.getPersons()));
+                    }
+                    if (json.getMethod().equals("delete")) {
+                        int id = json.getIdToDelete();
+                        this.personList.removeById(id);
                     }
                 }
 

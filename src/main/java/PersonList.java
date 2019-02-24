@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class PersonList {
     private ArrayList<JsonObj.Person> persons;
+    private static int personsId = 0;
 
     public PersonList() {
         persons = new ArrayList<JsonObj.Person>();
@@ -20,6 +21,7 @@ public class PersonList {
     }
 
     public void append(JsonObj.Person person) {
+        person.setId(personsId++);
         this.persons.add(person);
     }
 
@@ -39,6 +41,16 @@ public class PersonList {
             output.append(p.toString());
         }
         return output.toString();
+    }
+    public boolean removeById(int id){
+        boolean removed = false;
+        for (JsonObj.Person person : persons) {
+            if(person.getId() == id){
+                persons.remove(person);
+                removed = true;
+            }
 
+        }
+        return  removed;
     }
 }
